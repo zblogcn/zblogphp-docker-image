@@ -1,5 +1,4 @@
 <?php
-
 date_default_timezone_set('UTC');
 
 require 'zb_system/function/c_system_base.php';
@@ -27,6 +26,12 @@ define('DB_USER', getenv_docker('ZC_DB_USER', 'root'));
 
 define('DB_PWDD', getenv_docker('ZC_DB_PWDD', ''));
 
+// 可选
+define('DB_PREFIX', getenv_docker('ZC_DB_PREFIX', 'zbp_'));
+
+define('DB_ENGINE', getenv_docker('ZC_DB_ENGINE', 'MyISAM'));
+
+define('DB_TYPE', getenv_docker('ZC_DB_TYPE', 'mysqli'));
 
 // ** Site info & User  ** //
 define('BLOG_NAME', getenv_docker('ZC_BLOG_NAME', '又一个 Z-BLOG 站点'));
@@ -37,6 +42,7 @@ define('BLOG_PWDD', getenv_docker('ZC_BLOG_PWDD', 'zblog_pwdd'));
 
 
 // Main
+
 $zbloglang = &$zbp->option['ZC_BLOG_LANGUAGEPACK'];
 $zbp->LoadLanguage('system', '', $zbloglang);
 $zbp->LoadLanguage('zb_install', 'zb_install', $zbloglang);
@@ -53,15 +59,14 @@ if (strpos($zbp->option['ZC_MYSQL_SERVER'], ':') !== false) {
     }
     unset($servers);
 }
-$zbp->option['ZC_MYSQL_USERNAME'] = trim(DB_USER);
-$zbp->option['ZC_MYSQL_PASSWORD'] = trim(DB_PWDD);
 $zbp->option['ZC_MYSQL_NAME'] = trim(str_replace(array('\'', '"'), array('', ''), DB_NAME));
-// 
-$zbp->option['ZC_DATABASE_TYPE'] = 'mysqli';
-// 
-$zbp->option['ZC_MYSQL_PRE'] == 'zbp_';
-// 
-$zbp->option['ZC_MYSQL_ENGINE'] = "MyISAM";
+$zbp->option['ZC_MYSQL_USERNAME'] = DB_USER;
+$zbp->option['ZC_MYSQL_PASSWORD'] = DB_PWDD;
+
+$zbp->option['ZC_MYSQL_PRE'] = DB_PREFIX;
+$zbp->option['ZC_MYSQL_ENGINE'] = DB_ENGINE;
+$zbp->option['ZC_DATABASE_TYPE'] = DB_TYPE;
+
 $cts = str_replace('MyISAM', $zbp->option['ZC_MYSQL_ENGINE'], $cts);
 
 $zbp->db = ZBlogPHP::InitializeDB($zbp->option['ZC_DATABASE_TYPE']);
