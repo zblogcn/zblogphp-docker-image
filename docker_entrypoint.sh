@@ -10,6 +10,8 @@ if ! [ -e /app/index.php ]; then
 	## Modify permissions
 	chown -R www-data:www-data /app
 	php /app/install-docker.php
+	rm /app/install-docker.php
+	rm -rf /app/zb_install
 fi
 # echo "$@"
 # exec "$@"
