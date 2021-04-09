@@ -1,1 +1,47 @@
 # zblogphp-tencent-openapp-docker
+
+基于 `webdevops/php-nginx:7.4-alpine`，默认支持伪静态。
+
+## 构建和调试
+
+构建镜像
+
+```bash
+# 克隆项目并进入目录
+git clone git@github.com:zblogcn/zblogphp-tencent-openapp-docker.git
+cd zblogphp-tencent-openapp-docker
+
+# Build
+docker build -t zblogcn/zblogphp .
+```
+运行：
+
+```bash
+# docker rm --force zbp
+docker run --rm --name zbp \
+  -e ZC_DB_HOST=host.docker.internal \
+  -e ZC_DB_NAME=zblog_docker \
+  -e ZC_DB_USER=root \
+  -e ZC_DB_PWDD= \
+  -e ZC_BLOG_USER=admin \
+  -e ZC_BLOG_PWDD=qawsedrftg \
+  -p 8288:80 zblogcn/zblogphp
+#exit
+```
+正式运行将`--rm`参数改为`-d`
+
+## 注意事项
+
+镜像内不包含数据库；通过`host.docker.internal`可访问宿主环境。
+
+以下变量可选，使用`-e ZC_DB_PREFIX=pre_`指定：
+
+```php
+// 可选
+define('DB_PREFIX', getenv_docker('ZC_DB_PREFIX', 'zbp_'));
+
+define('DB_ENGINE', getenv_docker('ZC_DB_ENGINE', 'MyISAM'));
+
+define('DB_TYPE', getenv_docker('ZC_DB_TYPE', 'mysqli'));
+```
+如需使用`-v /root/zbp:/app`映射站点目录，请在首次运行时复制一份`install-docker.php`到`/root/zbp`文件夹内。
