@@ -78,8 +78,15 @@ $zbp->db->Close();
 
 $zbp->OpenConnect();
 $zbp->ConvertTableAndDatainfo();
-CreateTable($cts);
-InsertInfo();
+
+if (!CreateTable($cts)) {
+    die();
+}
+
+if (!InsertInfo()) {
+    die();
+}
+
 SaveConfig();
 $zbp->CloseConnect();
 
@@ -89,16 +96,16 @@ function CreateTable($sql)
 {
     global $zbp;
     if ($zbp->db->ExistTable($GLOBALS['table']['Config']) == true) {
-        echo $zbp->lang['zb_install']['exist_table_in_db'];
+        echo $zbp->lang['zb_install']['exist_table_in_db'] . "<br/>\n";
         return false;
     }
     $sql = $zbp->db->sql->ReplacePre($sql);
     $zbp->db->QueryMulit($sql);
     if ($zbp->db->ExistTable($GLOBALS['table']['Config']) == false) {
-        echo $zbp->lang['zb_install']['not_create_table'];
+        echo $zbp->lang['zb_install']['not_create_table'] . "<br/>\n";
         return false;
     }
-    echo $zbp->lang['zb_install']['create_table'] . "<br/>";
+    echo $zbp->lang['zb_install']['create_table'] . "<br/>\n";
     return true;
 }
 
@@ -311,11 +318,11 @@ function InsertInfo()
 
     $zbp->LoadMembers(0);
     if (count($zbp->members) == 0) {
-        echo $zbp->lang['zb_install']['not_insert_data'] . "<br/>";
+        echo $zbp->lang['zb_install']['not_insert_data'] . "<br/>\n";
 
         return false;
     } else {
-        echo $zbp->lang['zb_install']['create_datainfo'] . "<br/>";
+        echo $zbp->lang['zb_install']['create_datainfo'] . "<br/>\n";
 
         return true;
     }
@@ -353,7 +360,7 @@ function SaveConfig()
     $zbp->SaveOption();
 
     if (file_exists($zbp->path . 'zb_users/c_option.php') == false) {
-        echo $zbp->lang['zb_install']['not_create_option_file'] . "<br/>";
+        echo $zbp->lang['zb_install']['not_create_option_file'] . "<br/>\n";
 
         $s = "<pre>&lt;" . "?" . "php\r\n";
         $s .= "return ";
@@ -412,7 +419,7 @@ function SaveConfig()
     $zbp->BuildTemplate();
 
     if (file_exists($zbp->path . 'zb_users/cache/compiled/' . $zbp->option['ZC_BLOG_THEME'] . '/index.php') == false) {
-        echo $zbp->lang['zb_install']['not_create_template_file'] . "<br/>";
+        echo $zbp->lang['zb_install']['not_create_template_file'] . "<br/>\n";
     }
 
     $zbp->LoadCategories();
@@ -423,7 +430,7 @@ function SaveConfig()
     $zbp->modulesbyfilename['catalog']->Build();
     $zbp->modulesbyfilename['catalog']->Save();
 
-    echo $zbp->lang['zb_install']['save_option'] . "<br/>";
+    echo $zbp->lang['zb_install']['save_option'] . "<br/>\n";
 
     return true;
 }
