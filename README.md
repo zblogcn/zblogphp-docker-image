@@ -44,4 +44,9 @@ define('DB_ENGINE', getenv_docker('ZC_DB_ENGINE', 'MyISAM'));
 
 define('DB_TYPE', getenv_docker('ZC_DB_TYPE', 'mysqli'));
 ```
-如需使用`-v /root/zbp:/app`映射站点目录，请在首次运行时复制一份`install-docker.php`到`/root/zbp`文件夹内。
+
+默认会安装腾讯云相关插件，可使用`-e ZC_SKIP_TC_PLUGINS=1`跳过；
+
+> 腾讯云服务插件：[https://app.zblogcn.com/circle/?id=18117](https://app.zblogcn.com/circle/?id=18117 "腾讯云服务插件 - Z-Blog 应用中心")
+
+如需使用`-v /root/zbp:/app`映射站点目录，请在首次运行时复制`install-docker.php`、`install-docker-plugins.php`到`/root/zbp`文件夹内。
