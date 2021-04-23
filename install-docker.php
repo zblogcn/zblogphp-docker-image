@@ -79,12 +79,8 @@ $zbp->db->Close();
 $zbp->OpenConnect();
 $zbp->ConvertTableAndDatainfo();
 
-if (!CreateTable($cts)) {
-    die();
-}
-
-if (!InsertInfo()) {
-    die();
+if (CreateTable($cts)) {
+    InsertInfo();
 }
 
 SaveConfig();
@@ -96,7 +92,7 @@ function CreateTable($sql)
 {
     global $zbp;
     if ($zbp->db->ExistTable($GLOBALS['table']['Config']) == true) {
-        echo $zbp->lang['zb_install']['exist_table_in_db'] . "<br/>\n";
+        echo "该数据库里已存在相关的表和数据，将尝试直接使用，如连接失败请更改表前缀或是更换清空数据库再安装。" . "<br/>\n";
         return false;
     }
     $sql = $zbp->db->sql->ReplacePre($sql);
