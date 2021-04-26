@@ -1,6 +1,8 @@
 # zblogphp-tencent-openapp-docker
 
-基于 `webdevops/php-nginx:7.4-alpine`，默认支持伪静态。
+基于 `webdevops/php-nginx:7.4`，默认支持伪静态。
+
+项目地址：[https://github.com/zblogcn/zblogphp-tencent-openapp-docker](https://github.com/zblogcn/zblogphp-tencent-openapp-docker "GitHub - zblogcn/zblogphp-tencent-openapp-docker")
 
 ## 构建和调试
 
