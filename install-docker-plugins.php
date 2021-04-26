@@ -40,7 +40,7 @@ $arrPlugins = array(
 
 $zbp->Load();
 
-$ZC_USING_PLUGIN_LIST = $zbp->option['ZC_USING_PLUGIN_LIST'];
+// $ZC_USING_PLUGIN_LIST = $zbp->option['ZC_USING_PLUGIN_LIST'];
 
 foreach ($arrPlugins as $name => $url) {
     $zba = _GetHttpContent($url);
@@ -49,13 +49,13 @@ foreach ($arrPlugins as $name => $url) {
     }
     echo "Installing {$name} <br>\n";
     App::UnPack($zba);
-    $ZC_USING_PLUGIN_LIST = AddNameInString($ZC_USING_PLUGIN_LIST, $name);
-    if ("AppCentre" !== $name && is_readable($file_base = $GLOBALS['usersdir'] . 'plugin/' . $name . '/include.php')) {
-        include $file_base;
-    }
-    InstallPlugin($name);
+    // $ZC_USING_PLUGIN_LIST = AddNameInString($ZC_USING_PLUGIN_LIST, $name);
+    // if ("AppCentre" !== $name && is_readable($file_base = $GLOBALS['usersdir'] . 'plugin/' . $name . '/include.php')) {
+    //     include $file_base;
+    // }
+    // InstallPlugin($name);
 }
 
-$zbp->option['ZC_USING_PLUGIN_LIST'] = $ZC_USING_PLUGIN_LIST;
+// $zbp->option['ZC_USING_PLUGIN_LIST'] = $ZC_USING_PLUGIN_LIST;
 
-$zbp->SaveOption();
+// $zbp->SaveOption();
