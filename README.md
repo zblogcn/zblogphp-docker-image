@@ -24,7 +24,7 @@ docker run --rm --name zbp \
   -e ZC_DB_HOST=host.docker.internal \
   -e ZC_DB_NAME=zblog_docker \
   -e ZC_DB_USER=root \
-  -e ZC_DB_PWDD= \
+  -e ZC_DB_PWDD=shezhidemima \
   -e ZC_BLOG_USER=admin \
   -e ZC_BLOG_PWDD=qawsedrftg \
   -p 8288:80 zblogcn/zblogphp
