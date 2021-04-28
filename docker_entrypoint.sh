@@ -39,10 +39,12 @@ if [ -e /app/zb_users/c_option.php ]; then
     fi
 fi
 
-# cd /app
-chown -R www-data:www-data /app
-find ./ -type d -print|xargs chmod 777
-find ./ -type f -print|xargs chmod 777
+if [ "$ZC_SKIP_CHMOD" -eq "0" ]; then
+    # cd /app
+    chown -R www-data:www-data /app
+    find ./ -type d -print|xargs chmod 777
+    find ./ -type f -print|xargs chmod 777
+fi
 
 # echo "$@"
 # exec "$@"
