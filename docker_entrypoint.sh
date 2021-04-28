@@ -22,7 +22,7 @@ if [ ! -e /app/zb_users/c_option.php ] && [ -e /app/install-docker.php ]; then
 	php /app/install-docker.php
 fi
 
-if [ "$ZC_SKIP_TC_PLUGINS" -eq "0" ] && [ -e /app/install-docker-plugins.php ] && [ ! -d /app/zb_users/plugin/tencentcloud_common ]; then
+if [ "$ZC_SKIP_TC_PLUGINS" -eq "0" ] && [ -e /app/install-docker-plugins.php ]; then
 	echo Updating Plugins...
 	php /app/install-docker-plugins.php
 fi
