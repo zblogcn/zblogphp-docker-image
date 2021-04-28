@@ -12,10 +12,10 @@ if ! [ -e /app/index.php ]; then
 	rm /app/Z-BlogPHP_1_6_8_2210_Valyria.zip
 fi
 
-# cd /app
-chown -R www-data:www-data /app
-find ./ -type d -print|xargs chmod 777
-find ./ -type f -print|xargs chmod 777
+# # cd /app
+# chown -R www-data:www-data /app
+# find ./ -type d -print|xargs chmod 777
+# find ./ -type f -print|xargs chmod 777
 
 if [ ! -e /app/zb_users/c_option.php ] && [ -e /app/install-docker.php ]; then
 	echo Installing Z-BlogPHP...
@@ -28,7 +28,7 @@ if [ "$ZC_SKIP_TC_PLUGINS" -eq "0" ] && [ -e /app/install-docker-plugins.php ] &
 fi
 
 if [ -e /app/zb_users/c_option.php ]; then
-	if [ -f /app/zb_install ]; then
+	if [ -d /app/zb_install ]; then
 		rm -rf /app/zb_install
 	fi
 	if [ -e /app/install-docker.php ]; then
@@ -38,6 +38,11 @@ if [ -e /app/zb_users/c_option.php ]; then
 		rm /app/install-docker-plugins.php
 	fi
 fi
+
+# cd /app
+chown -R www-data:www-data /app
+find ./ -type d -print|xargs chmod 777
+find ./ -type f -print|xargs chmod 777
 
 # echo "$@"
 # exec "$@"
