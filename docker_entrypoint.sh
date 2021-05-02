@@ -12,13 +12,14 @@ if [ ! -e /app/zb_users/c_option.php ]; then
 fi
 
 ## Download Z-BlogPHP
+ZC_INSTALL_NAME=Z-BlogPHP_1_7_0_2945_Tenet
 if ! [ -e /app/index.php ]; then
     echo Downloading Z-BlogPHP...
-    wget https://update.zblogcn.com/zip/Z-BlogPHP_1_6_8_2210_Valyria.zip
+    wget https://update.zblogcn.com/zip/$ZC_INSTALL_NAME.zip
     echo Unpacking Z-BlogPHP...
-    unzip -oq Z-BlogPHP_1_6_8_2210_Valyria.zip
+    unzip -oq $ZC_INSTALL_NAME.zip
     echo Delete zip
-    rm /app/Z-BlogPHP_1_6_8_2210_Valyria.zip
+    rm /app/$ZC_INSTALL_NAME.zip
 fi
 
 # # cd /app
