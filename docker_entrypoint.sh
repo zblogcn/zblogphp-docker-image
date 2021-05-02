@@ -2,9 +2,13 @@
 set -e
 cd /app
 
-if [ ! -e /app/zb_users/c_option.php ] then
-    cp /root/install-docker.php /app/install-docker.php
-    rm /app/index.php
+if [ ! -e /app/zb_users/c_option.php ]; then
+    if [ ! -d /app/zb_install ]; then
+        rm -f /app/index.php
+    fi
+    if [ ! -e /app/install-docker.php ]; then
+        cp /root/install-docker.php /app/install-docker.php
+    fi
 fi
 
 ## Download Z-BlogPHP
