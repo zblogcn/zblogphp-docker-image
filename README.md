@@ -10,8 +10,8 @@
 
 ```bash
 # 克隆项目并进入目录
-git clone git@github.com:zblogcn/zblogphp-tencent-openapp-docker.git
-cd zblogphp-tencent-openapp-docker
+git clone git@github.com:zblogcn/zblogphp-tencent-openapp-docker.git zbp-docker
+cd zbp-docker
 
 # Build
 docker build -t zblogcn/zblogphp .
