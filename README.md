@@ -4,6 +4,12 @@
 
 项目地址：[https://github.com/zblogcn/zblogphp-tencent-openapp-docker](https://github.com/zblogcn/zblogphp-tencent-openapp-docker "GitHub - zblogcn/zblogphp-tencent-openapp-docker")
 
+## 使用 Docker Compose 部署「推荐」
+
+wdssmq/zbp-docker-compose: 使用 Docker Compose 快捷部署 Z-BlogPHP + MySQL；：
+
+[https://github.com/wdssmq/zbp-docker-compose](https://github.com/wdssmq/zbp-docker-compose "wdssmq/zbp-docker-compose: 使用 Docker Compose 快捷部署 Z-BlogPHP + MySQL；")
+
 ## 构建和调试
 
 构建镜像
