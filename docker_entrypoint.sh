@@ -9,6 +9,9 @@ if [ ! -e /app/zb_users/c_option.php ]; then
     if [ ! -e /app/install-docker.php ]; then
         cp /root/install-docker.php /app/install-docker.php
     fi
+    if [ ! -e /app/install-docker-plugins.php ]; then
+        cp /root/install-docker-plugins.php /app/install-docker-plugins.php
+    fi
 fi
 
 ## Download Z-BlogPHP
