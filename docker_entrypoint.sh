@@ -15,7 +15,7 @@ if [ ! -e /app/zb_users/c_option.php ]; then
 fi
 
 ## Download Z-BlogPHP
-ZC_INSTALL_NAME=Z-BlogPHP_1_7_0_2945_Tenet
+# ZC_INSTALL_NAME 由 Dockerfile 内定义
 if ! [ -e /app/index.php ]; then
     echo Downloading Z-BlogPHP...
     wget https://update.zblogcn.com/zip/$ZC_INSTALL_NAME.zip
