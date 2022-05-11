@@ -53,6 +53,8 @@ define('DB_ENGINE', getenv_docker('ZC_DB_ENGINE', 'MyISAM'));
 define('DB_TYPE', getenv_docker('ZC_DB_TYPE', 'mysqli'));
 ```
 
+「可选」`-e ZC_INSTALL_NAME=Z-BlogPHP_1_7_2_3050_Tenet`可指定 Z-BlogPHP 版本；
+
 「可选」默认会安装腾讯云相关插件，可使用`-e ZC_SKIP_TC_PLUGINS=1`跳过；
 
 > 腾讯云服务插件：[https://app.zblogcn.com/circle/?id=18117](https://app.zblogcn.com/circle/?id=18117 "腾讯云服务插件 - Z-Blog 应用中心")
