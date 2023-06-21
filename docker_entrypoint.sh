@@ -54,9 +54,9 @@ fi
 
 if [ "$ZC_SKIP_CHMOD" -eq "0" ]; then
     # cd /app
-    chown -R www-data:www-data /app
-    find ./ -type d -print|xargs chmod 777
-    find ./ -type f -print|xargs chmod 777
+    chown -R 1000:1000 /app
+    find ./ -type d -print|xargs chmod 755
+    find ./ -type f -print|xargs chmod 644
 fi
 
 # echo "$@"
