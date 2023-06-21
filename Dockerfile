@@ -1,4 +1,7 @@
-FROM webdevops/php-nginx:7.4
+ARG WEB_SERVER=nginx
+ARG PHP_VER=7.4
+
+FROM webdevops/php-${WEB_SERVER}:${PHP_VER}
 
 VOLUME /app
 
@@ -6,7 +9,7 @@ ADD nginx/vhost.common.d/10-location-root.conf /opt/docker/etc/nginx/vhost.commo
 
 ENV ZC_SKIP_TC_PLUGINS 0
 ENV ZC_SKIP_CHMOD 0
-ENV ZC_INSTALL_NAME Z-BlogPHP_1_7_2_3050_Tenet
+ENV ZC_INSTALL_NAME Z-BlogPHP_1_7_3_3230_Finch
 
 # ADD install-docker.php /app/install-docker.php
 # ADD install-docker-plugins.php /app/install-docker-plugins.php
