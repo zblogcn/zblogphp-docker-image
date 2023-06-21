@@ -1,6 +1,6 @@
-# zblogphp-tencent-openapp-docker
+# zblogphp-docker
 
-基于 `webdevops/php-nginx:7.4`，默认支持伪静态。
+基于 `webdevops/php-nginx`，默认支持伪静态。
 
 项目地址：[https://github.com/zblogcn/zblogphp-tencent-openapp-docker](https://github.com/zblogcn/zblogphp-tencent-openapp-docker "GitHub - zblogcn/zblogphp-tencent-openapp-docker")
 
@@ -9,6 +9,17 @@
 wdssmq/zbp-docker-compose: 使用 Docker Compose 快捷部署 Z-BlogPHP + MySQL；：
 
 [https://github.com/wdssmq/zbp-docker-compose](https://github.com/wdssmq/zbp-docker-compose "wdssmq/zbp-docker-compose: 使用 Docker Compose 快捷部署 Z-BlogPHP + MySQL；")
+
+## 实际可用镜像及 TAG
+
+- `wdssmq/zblogphp`
+    - `wdssmq/zblogphp:latest` - Nginx + PHP 7.4
+- `wdssmq/zblogphp-nginx`
+    - `wdssmq/zblogphp-nginx:latest` - 同 8.2
+    - `wdssmq/zblogphp-nginx:8.2`    - Nginx + PHP 8.2
+    - `wdssmq/zblogphp-nginx:8.1`    - Nginx + PHP 8.1
+    - `wdssmq/zblogphp-nginx:8.0`    - Nginx + PHP 8.0
+    - `wdssmq/zblogphp-nginx:7.4`    - Nginx + PHP 7.4
 
 ## 构建和调试
 
@@ -21,6 +32,10 @@ cd zbp-docker
 
 # Build
 docker build -t zblogcn/zblogphp .
+
+# 指定 PHP 版本
+docker build -t zblogcn/zblogphp:8.2 --build-arg PHP_VER="8.2" .
+
 ```
 运行：
 
