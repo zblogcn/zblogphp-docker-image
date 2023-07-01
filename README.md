@@ -40,8 +40,10 @@ docker build -t zblogcn/zblogphp:8.2 --build-arg PHP_VER="8.2" .
 运行：
 
 ```bash
+mkdir -p ~/www/zbp
 # docker rm --force zbp
 docker run --rm --name zbp \
+  -v ~/www/zbp:/app \
   -e ZC_DB_HOST=host.docker.internal \
   -e ZC_DB_NAME=zblog_docker \
   -e ZC_DB_USER=root \
@@ -66,7 +68,10 @@ define('DB_PREFIX', getenv_docker('ZC_DB_PREFIX', 'zbp_'));
 define('DB_ENGINE', getenv_docker('ZC_DB_ENGINE', 'MyISAM'));
 
 define('DB_TYPE', getenv_docker('ZC_DB_TYPE', 'mysqli'));
+
 ```
+
+对于挂载文件夹 `~/www/zbp`，其中的权限应为 `1000:1000`，可使用命令 `chown -R 1000:1000 ~/www/zbp` 修改；
 
 「可选」`-e ZC_INSTALL_NAME=Z-BlogPHP_1_7_2_3050_Tenet`可指定 Z-BlogPHP 版本；
 
@@ -76,4 +81,3 @@ define('DB_TYPE', getenv_docker('ZC_DB_TYPE', 'mysqli'));
 
 「可选」`-e ZC_SKIP_CHMOD=1`——跳过文件权限变更，适用于插件开发等文件较多的场景，此时需要自行确保具体文件的写入权限；
 
-「可选」如需使用`-v /root/zbp:/app`映射站点目录，请在首次运行时复制`install-docker.php`、`install-docker-plugins.php`到`/root/zbp`文件夹内。
