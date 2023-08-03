@@ -51,15 +51,19 @@ docker run --rm --name zbp \
   -e ZC_BLOG_USER=admin \
   -e ZC_BLOG_PWDD=shezhidemima \
   -p 8288:80 zblogcn/zblogphp
-#exit
+# exit
+
 ```
-正式运行将`--rm`参数改为`-d`
+
+> 实际使用还是建议用 `Docker Compose`；
+
+正式运行将 `--rm` 参数改为 `-d`；
 
 ## 注意事项
 
-镜像内不包含数据库；通过`host.docker.internal`可访问宿主环境。
+镜像内不包含数据库；通过 `host.docker.internal` 可访问宿主环境，或者使用数据库容器 ID；
 
-以下变量可选，使用`-e ZC_DB_PREFIX=pre_`指定：
+以下变量可选，使用 `-e ZC_DB_PREFIX=pre_` 指定：
 
 ```php
 // 可选
@@ -73,11 +77,11 @@ define('DB_TYPE', getenv_docker('ZC_DB_TYPE', 'mysqli'));
 
 对于挂载文件夹 `~/www/zbp`，其中的权限应为 `1000:1000`，可使用命令 `chown -R 1000:1000 ~/www/zbp` 修改；
 
-「可选」`-e ZC_INSTALL_NAME=Z-BlogPHP_1_7_2_3050_Tenet`可指定 Z-BlogPHP 版本；
+「可选」`-e ZC_INSTALL_NAME=Z-BlogPHP_1_7_2_3050_Tenet` 可指定 Z-BlogPHP 版本；
 
-「可选」默认会安装腾讯云相关插件，可使用`-e ZC_SKIP_TC_PLUGINS=1`跳过；
+「可选」默认会安装腾讯云相关插件，可使用 `-e ZC_SKIP_TC_PLUGINS=1` 跳过；
 
 > 腾讯云服务插件：[https://app.zblogcn.com/circle/?id=18117](https://app.zblogcn.com/circle/?id=18117 "腾讯云服务插件 - Z-Blog 应用中心")
 
-「可选」`-e ZC_SKIP_CHMOD=1`——跳过文件权限变更，适用于插件开发等文件较多的场景，此时需要自行确保具体文件的写入权限；
+「可选」`-e ZC_SKIP_CHMOD=1` —— 跳过文件权限变更，适用于插件开发等文件较多的场景，此时需要自行确保具体文件的写入权限；
 
