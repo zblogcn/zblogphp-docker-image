@@ -2,7 +2,7 @@
 
 基于 `webdevops/php-nginx`，默认支持伪静态。
 
-项目地址：[https://github.com/zblogcn/zblogphp-tencent-openapp-docker](https://github.com/zblogcn/zblogphp-tencent-openapp-docker "GitHub - zblogcn/zblogphp-tencent-openapp-docker")
+项目地址：[https://github.com/zblogcn/zblogphp-docker-image](https://github.com/zblogcn/zblogphp-docker-image "GitHub - zblogcn/zblogphp-docker-image")
 
 ## 使用 Docker Compose 部署「推荐」
 
@@ -27,8 +27,8 @@ wdssmq/zbp-docker-compose: 使用 Docker Compose 快捷部署 Z-BlogPHP + MySQL�
 
 ```bash
 # 克隆项目并进入目录
-git clone git@github.com:zblogcn/zblogphp-tencent-openapp-docker.git zbp-docker
-cd zbp-docker
+git clone git@github.com:zblogcn/zblogphp-docker-image.git zbp-docker-image
+cd zbp-docker-image
 
 # Build
 docker build -t zblogcn/zblogphp .
